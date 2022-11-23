@@ -20,7 +20,7 @@ kernel.bin: kernel/kernel_entry.o ${OBJ}
 		ld -o $@ -melf_i386 -Ttext 0x1000 $^ --oformat binary
 
 %.o: %.c ${HEADERS}
-		gcc ${CFLAGS} -ffreestanding -c $< -o $@
+		gcc ${CFLAGS} -ffreestanding -fno-pie -c $< -o $@
 
 %.o: %.asm
 		nasm $< -f elf32 -o $@
